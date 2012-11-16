@@ -44,6 +44,10 @@ class ArrayFieldBase(object):
         else:
             for v in value:
                 super(ArrayFieldBase, self).run_validators(v)
+
+    def value_to_string(self, obj):
+        value = self._get_val_from_obj(obj)
+        return self.get_prep_value(value)
                 
 class ArrayFieldMetaclass(models.SubfieldBase):
     pass
